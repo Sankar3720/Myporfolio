@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sankarguru M - Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0a66c2; /* LinkedIn blue */
+            --dark: #1d2226; /* Dark blue-gray */
+            --light: #f5f5f5;
+            --gray: #e4e4e4;
+            --text-dark: #1d2226;
+            --text-light: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: white;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        /* Header/Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            z-index: 100;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .profile-img-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 4px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 80px 5%;
+            background-color: white;
+        }
+        
+        .section-dark {
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+        }
+        
+        /* Experience Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .card-subtitle {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .card-text {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .card-text li {
+            margin-bottom: 8px;
+            list-style-position: inside;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .skill-item {
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .skill-item h3 {
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .skill-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Form */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(10, 102, 194, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .contact-text {
+            flex: 1;
+        }
+        
+        .contact-text p {
+            color: #666;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            padding: 50px 5%;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .social-links {
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            margin: 0 12px;
+            transition: color 0.3s;
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .footer-text {
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .copyright {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">SANKARGURU</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-img-container">
+                <img src="https://i.ibb.co/m5V6fLFF/Whats-App-Image-2025-06-14-at-17-34-53.jpg" alt="Professional Photo of Sankarguru M" class="profile-img">
+            </div>
+            <h1 class="hero-title">Sankarguru M.</h1>
+            <p class="hero-subtitle">Accounting & Administration Professional</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Contact Me</a>
+                <a href="#experience" class="btn btn-secondary">View Experience</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem; line-height: 1.8;">
+            Experienced professional with 14+ years in administration, operations, and finance. Currently working at Guhan Builders and Promoters (P) Ltd since 2009, handling office management, financial operations, and creative design. Previously served as Store Keeper at AVANT (MAURITIUS) LIMITED. Skilled in accounting, vendor coordination, event management, and customer service. I bring strong organizational skills, attention to detail, and the ability to manage multiple responsibilities efficiently.
+        </p>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section section-dark">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="cards-container">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Office Management" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Guhan Builders and Promoters</h3>
+                    <p class="card-subtitle">Administration & Operations | Dec 2009 - Present</p>
+                    <ul class="card-text">
+                        <li>Managed complete office operations and staff coordination</li>
+                        <li>Handled financial responsibilities including ledger maintenance, payroll processing, and director accounts</li>
+                        <li>Organized corporate events and marketing functions</li>
+                        <li>Designed promotional materials (posters, flex banners)</li>
+                        <li>Coordinated with vendors and investors</li>
+                        <li>Prepared and submitted monthly reports to directors</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Store Management" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">AVANT (MAURITIUS) LIMITED</h3>
+                    <p class="card-subtitle">Store Keeper | May 2007 - Nov 2009</p>
+                    <ul class="card-text">
+                        <li>Managed complete store inventory and materials</li>
+                        <li>Coordinated cargo shipments and logistics</li>
+                        <li>Maintained accurate records of stock movements</li>
+                        <li>Ensured proper storage conditions for materials</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                <h3>Financial Management</h3>
+                <p>Ledger maintenance, payroll processing, financial reporting</p>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-building"></i></div>
+                <h3>Office Administration</h3>
+                <p>Office management, staff coordination, event planning</p>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-users"></i></div>
+                <h3>Customer Service</h3>
+                <p>Client relations, vendor coordination, customer support</p>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-laptop"></i></div>
+                <h3>Technical Skills</h3>
+                <p>MS Office, Tally 9, Creative Design</p>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Reporting</h3>
+                <p>Monthly reports, financial statements, performance analysis</p>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+                <h3>Organization</h3>
+                <p>Time management, multitasking, attention to detail</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section section-dark">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p>spk2guru@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Phone</h4>
+                        <p>95000 65580</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Address</h4>
+                        <p>4, Kadumbadi Amman Kovil 2nd Street,<br>Kodungaiyur, Chennai – 600 118</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Your Message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px;">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">SANKARGURU M</div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="footer-text">I hereby declare that the above furnished particulars are true and correct to the best of my knowledge and belief.</p>
+        <p class="copyright">&copy; 2023 Sankarguru M. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
